@@ -1,14 +1,15 @@
 pluginManagement {
     repositories {
-        mavenLocal()
+//        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
+        maven { url = "https://jitpack.io/" }
     }
     resolutionStrategy {
         eachPlugin {
             switch (requested.id.id) {
                 case "me.yuugiri.fluiditygradle":
-                    useModule("me.yuugiri.fluiditygradle:FluidityGradle:1.0.0")
+                    useModule("com.github.mccheatz:FluidityGradle:68becb585b")
                     break
             }
         }

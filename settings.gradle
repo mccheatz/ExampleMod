@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            switch (requested.id.id) {
+                case "me.yuugiri.fluiditygradle":
+                    useModule("me.yuugiri.fluiditygradle:FluidityGradle:1.0.0")
+                    break
+            }
+        }
+    }
+}
+rootProject.name = 'ExampleMod'
+

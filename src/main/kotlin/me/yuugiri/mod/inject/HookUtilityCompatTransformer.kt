@@ -2,9 +2,10 @@ package me.yuugiri.mod.inject
 
 import me.yuugiri.hutil.HookUtility
 import me.yuugiri.hutil.obfuscation.SeargeObfuscationMap
+import me.yuugiri.hutil.processor.AccessProcessor
 import me.yuugiri.hutil.processor.hook.MethodHookProcessor
 import me.yuugiri.mod.inject.hooks.AbstractHookProvider
-import me.yuugiri.mod.util.resoveInstances
+import me.yuugiri.mod.util.resolveInstances
 import net.minecraft.launchwrapper.IClassTransformer
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassWriter
@@ -50,12 +51,11 @@ class HookUtilityCompatTransformer : IClassTransformer {
 
             // load access transformer
             val accessRecords: Int
-            accessRecords = 0
-//            hook.processorList.add(AccessProcessor.fromFMLAccessTransformer(HookUtilityCompatTransformer::class.java.getResourceAsStream("/fluidity_at.cfg")!!.bufferedReader(Charsets.UTF_8)).also { accessRecords = it.records.size })
+            hook.processorList.add(AccessProcessor.fromFMLAccessTransformer(HookUtilityCompatTransformer::class.java.getResourceAsStream("/fluidity_at.cfg")!!.bufferedReader(Charsets.UTF_8)).also { accessRecords = it.records.size })
 
             // load hooks
             var hookApplied = 0
-            resoveInstances("${AbstractHookProvider::class.java.`package`.name}.impl", AbstractHookProvider::class.java)
+            resolveInstances("${AbstractHookProvider::class.java.`package`.name}.impl", AbstractHookProvider::class.java)
                 .forEach {
                     it.applyHook(MethodHookProcessor)
                     hookApplied++

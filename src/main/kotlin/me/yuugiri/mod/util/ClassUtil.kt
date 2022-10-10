@@ -35,7 +35,7 @@ fun <T : Any> resolvePackage(packagePath: String, klass: Class<T>): List<Class<o
     return list
 }
 
-fun <T : Any> resoveInstances(packagePath: String, klass: Class<T>): List<T> {
+fun <T : Any> resolveInstances(packagePath: String, klass: Class<T>): List<T> {
     return resolvePackage(packagePath, klass).map {
         try {
             it.newInstance()

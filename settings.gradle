@@ -9,7 +9,7 @@ pluginManagement {
         eachPlugin {
             switch (requested.id.id) {
                 case "me.yuugiri.fluiditygradle":
-                    useModule("com.github.mccheatz:FluidityGradle:68becb585b")
+                    useModule("com.github.mccheatz:FluidityGradle:e0d832005c")
                     break
             }
         }
